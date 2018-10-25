@@ -2,8 +2,8 @@
 let arrayWords = ['Karol', 'Adam', 'Rogowski', 'Politechnika', 'Super', 'Weekend'];
 let longest = ""
 for (i=0; i<arrayWords.length; i++){
-    if (arrayWords[i].length > longest){
+    if (arrayWords[i].length > longest.length){
         longest= arrayWords[i];
     }
 }
-console.log(longest)
+console.log(`The longest word is ${longest}`)

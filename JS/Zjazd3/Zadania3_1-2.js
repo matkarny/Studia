@@ -114,3 +114,4 @@ return    { a: a,
 };}
 calculator.setOperation("-")
 console.log(calculator(4,5))
+

@@ -33,16 +33,16 @@ function theBiggestBall(weight,addition) {
             weight: weight
         },
     ];
-    ballsOfSteel[parseInt(8 * Math.random())].weight += addition
+    ballsOfSteel[parseInt(8 * Math.random())].weight += addition;
     if (ballsOfSteel.length === 8) {
         let arr1 = ballsOfSteel;
-        let arr2 = []
+        let arr2 = [];
         while (arr1.length > 4) {
             arr2.push(arr1.pop())
 
         }
-        let firstWeight = 0
-        arr1.forEach(i => firstWeight += i.weight)
+        let firstWeight = 0;
+        arr1.forEach(i => firstWeight += i.weight);
         if (firstWeight === 4*weight) {
             ballsOfSteel = arr2
         } else {
@@ -51,13 +51,13 @@ function theBiggestBall(weight,addition) {
     }
     if (ballsOfSteel.length === 4) {
         let arr3 = ballsOfSteel;
-        let arr4 = []
+        let arr4 = [];
         while (arr3.length > 2) {
             arr4.push(arr3.pop())
 
         }
         let secondWeight = 0;
-        arr3.forEach(x => secondWeight += x.weight)
+        arr3.forEach(x => secondWeight += x.weight);
         if (secondWeight === 2*weight) {
             ballsOfSteel = arr4
         } else {
@@ -72,4 +72,4 @@ function theBiggestBall(weight,addition) {
 }
 
 
-theBiggestBall(40,5)
+theBiggestBall(40,5);

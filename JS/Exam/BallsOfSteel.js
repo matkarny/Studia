@@ -61,4 +61,4 @@ function theBiggestBall(weight,addition) {
 }
 }
 
-theBiggestBall(50,10);
+theBiggestBall(50,10)

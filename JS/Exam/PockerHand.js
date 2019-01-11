@@ -30,9 +30,9 @@ function getRandom(arr, n) {
     return result;
 }
 
-let ourHand = getRandom(deck(),5)
-let howMany = (a) => a.length
-console.log(ourHand)
+let ourHand = getRandom(deck(),5);
+let howMany = (a) => a.length;
+console.log(ourHand);
 let heartCount = ourHand.filter(p => p.suit == "Hearts");
 let diamondsCount = ourHand.filter(e => e.suit == "Diamonds");
 let spadesCount = ourHand.filter(e => e.suit == "Spades");
@@ -54,7 +54,12 @@ let kCount = ourHand.filter(p => p.name == "K");
 
 
 //    this.names = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-let agregatorSuits = [howMany(heartCount),howMany(diamondsCount),(spadesCount),howMany(clubsCount)];
+let agregatorSuits = {
+    hearts: howMany(heartCount),
+    diamonds: howMany(diamondsCount),
+    spadesCount: howMany(spadesCount),
+    clubs: howMany(clubsCount)
+};
 
 let agregatorElem = {
     ace: howMany(aceCount),
@@ -71,6 +76,8 @@ let agregatorElem = {
     q: howMany(qCount),
     k: howMany(kCount)
 };
-console.log(agregatorElem)
+console.log(Object.values(agregatorSuits).map((e) => e > 1));
+console.log(Object.values(agregatorElem).map((e) => e > 0));
+
 
 //function highestSet ()

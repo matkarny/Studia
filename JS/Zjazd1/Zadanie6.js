@@ -3,7 +3,7 @@ maxArray = Math.max.apply(null, arrayM);
 let arrayNew=[];
 let i=0;
 while (i<arrayM.length) {
-    let positionArray = arrayM.indexOf(maxArray, i)
+    let positionArray = arrayM.indexOf(maxArray, i);
     arrayNew.push(positionArray);
     i=positionArray;
     i++

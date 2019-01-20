@@ -46,6 +46,7 @@ function basicOperations(a,b){
     console.log(`Wynik mnożenia to ${mnozenie}`);
     console.log(`Wynik dzielenia to ${dzielenie}`);
 }
-basicOperations(7,5)
+basicOperations(7,5);
 
 
+highestSet;

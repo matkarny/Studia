@@ -46,10 +46,10 @@ function factorialOfNumber(a){
 //
 function reverseArrayGood(arr) {
     let revArr = [];
-    let i = arr.length - 1
+    let i = arr.length - 1;
     while(arr.length !== revArr.length) {
         popObj = arr[i];
-        revArr.push(popObj)
+        revArr.push(popObj);
         i--
     } return revArr
 }
@@ -73,7 +73,7 @@ function sumPair(arrGiven) {
    let arrT = [];
    let i = 0;
     while (i <arrGiven.length) {
-        let exampleArray = []
+        let exampleArray = [];
         let pop1 = arrGiven[i];
         i++;
         let pop2 = arrGiven[i];
@@ -122,7 +122,7 @@ function sumDoubleLast(arrGiven){
             pop2=pop1
         }
       //console.log(pop2);
-        arrPushNumber = pop1 + pop2
+        arrPushNumber = pop1 + pop2;
         arrTwice.push(arrPushNumber)
    //console.log(arrTwice)
 
@@ -152,7 +152,7 @@ function randomLowest(arr, t){
     let minArray = [];
     while(times>0){
         let n = parseInt(array.length*Math.random());
-        minArray.push(arr[n])
+        minArray.push(arr[n]);
         times--
     }
     return   console.log(`Min object is ${Math.min(...minArray)} from array ${minArray}`)

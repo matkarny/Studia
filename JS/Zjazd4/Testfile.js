@@ -48,18 +48,18 @@ let people = [
         birthYear: 1988,
         sayHello: function(){console.log(this.name+ ' says hello')}
     }
-]
+];
 
 
+//
+// console.log(people.filter(p=> p.birthYear > 1980)); // does it change
+// console.log(people.every(p=> p.birthYear > 1980));
+// console.log(people.every(p=> p.birthYear >= 1980));
+// console.log(people.find(p=>p.birthYear != 1985));
+// console.log(people.find(p=>false));
 
-console.log(people.filter(p=> p.birthYear > 1980)); // does it change
-console.log(people.every(p=> p.birthYear > 1980));
-console.log(people.every(p=> p.birthYear >= 1980));
-console.log(people.find(p=>p.birthYear != 1985));
-console.log(people.find(p=>false));
-
- let arr = [1,2,3,3,5]
- console.log(arr.find(p => p ===3));
+ // let arr = [1,2,3,3,5]
+ // console.log(arr.find(p => p ===3));
 
 
 //console.log(people.map((p,i)=>i + ':' + p.name));
@@ -75,5 +75,5 @@ function Person(fn, ln, bd){
     this.lastName = ln;
 }
 
-console.log(people.map((p,i)=> new Person(p.name.split(' ')[1],p.name.split(' ')[0],
-    i)));
+// console.log(people.map((p,i)=> new Person(p.name.split(' ')[1],p.name.split(' ')[0],
+//     i)));

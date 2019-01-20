@@ -1,12 +1,12 @@
-const dataFile = require('./JSONdata')
+const dataFile = require('./JSONdata');
 
 //console.log(typeof dataFile)
 // console.log(typeof stringDataFile);
 // console.log(stringDataFile)
 
 function DetailsOfPayent(name,operation,date) {
-    this.Type = operation
-    this.company = name
+    this.Type = operation;
+    this.company = name;
     this.date = date
 }
 
@@ -16,10 +16,11 @@ function Object(cost) {
 
 }
 // let details = new Object(DetailsOfPayent)
-let everyCost = dataFile.map((o) => new Object(o.cost))
-// console.log(dataFile.map((o) => new DetailsOfPayent(o.name[0],o.operation,o.date)))
+let everyCost = dataFile.forEach((e) => pietruszka + e.cost);
 
-let sumaObj = everyCost.every(+=)
+// console.log(dataFile.map((o) => new DetailsOfPayent(o.name[0],o.operation,o.date)))
+console.log(everyCost);
+
 // function Object(cost,) {
 //     this.cost = cost;
 //

@@ -2,7 +2,7 @@
 let number = 1;
 let sum = 1;
 while (number <= 7){
-    sum *= number
+    sum *= number;
     number++
 }
-console.log('Factional is ' + sum)
+console.log('Factional is ' + sum);

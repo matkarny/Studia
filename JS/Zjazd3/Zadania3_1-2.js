@@ -13,10 +13,10 @@ let iife = (function () {
         },
         reverseValue: function () {
             if(isFinite(value)){
-                let parsedValue = parseFloat(value)
+                let parsedValue = parseFloat(value);
                 return parsedValue*(-1)
             } else {
-                reverseValue = value.split("").reverse().join("")
+                reverseValue = value.split("").reverse().join("");
                 return reverseValue
             }
 
@@ -48,7 +48,7 @@ let iifeHidden = (function () {
     let changeValue = function (a) {
         value = a;
         return this.value
-    }
+    };
 
         return {
             variable: value,
@@ -59,17 +59,17 @@ let iifeHidden = (function () {
     }
       ) ();
 
-iifeHidden.setValue("majgot")
-console.log(iifeHidden.showValue())
+iifeHidden.setValue("majgot");
+console.log(iifeHidden.showValue());
 //3) Create a function definition (arrow ). This function is to take one input string/number and is to return object described in point above with value set to input.
 let allData = function(val) {
     iifeHidden.setValue(val);
     let obj = {
         ourValue: iifeHidden.showValue(),
         reversedValue: iifeHidden.reverseValue()
-    }
+    };
     return console.log(obj);
-}
+};
 //allData("mama")
 
 //4) Create four function definitions. One for every basic math operations and taking two input parameters. Create one more function. This function is to return calculation object. This object is to have parameters object field that holds two operation parameters inside (x and y). Function field that points to a function with math operation (defined at the beginning). A function setOperation() that sets the field from previous sentence and a Calculate function that makes calculation and returns its value.
@@ -88,12 +88,12 @@ let mnoz = (a,b)=> {
 };
 let dziel = (a,b)=> {
     return a / b;
-}
+};
 
 
 let calculator = function(a,b) {
      let result = operationType(a,b);
-     let operationType = mnoz
+     let operationType = mnoz;
     let setOperation = function (operation){
         if (operation == '+') {
             return  operationType = dod;
@@ -105,13 +105,13 @@ let calculator = function(a,b) {
           return  operationType = dziel;
         } else {
             return 'wrong';
-        }}
+        }};
 
 return    { a: a,
             b: b,
         operationResult: result,
     setOperation: setOperation
-};}
-calculator.setOperation("-")
-console.log(calculator(4,5))
+};};
+calculator.setOperation("-");
+console.log(calculator(4,5));
 

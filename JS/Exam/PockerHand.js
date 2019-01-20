@@ -38,9 +38,9 @@ let diamondsCount = ourHand.filter(e => e.suit == "Diamonds");
 let spadesCount = ourHand.filter(e => e.suit == "Spades");
 let clubsCount = ourHand.filter(e => e.suit == "Clubs");
 let aceCount = ourHand.filter(p => p.name == "A");
-let twoCount = ourHand.filter(p => p.name == 2);
-let threeCount = ourHand.filter(p => p.name == 3);
-let fourCount = ourHand.filter(p => p.name == 4);
+let twoCount = ourHand.filter(p => p.name == "2");
+let threeCount = ourHand.filter(p => p.name == "3");
+let fourCount = ourHand.filter(p => p.name == "4");
 let fiveCount = ourHand.filter(p => p.name == "5");
 let sixCount = ourHand.filter(p => p.name == "6");
 let sevenCount = ourHand.filter(p => p.name == "7");
@@ -51,9 +51,6 @@ let jCount = ourHand.filter(p => p.name == "J");
 let qCount = ourHand.filter(p => p.name == "Q");
 let kCount = ourHand.filter(p => p.name == "K");
 
-
-
-//    this.names = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 let agregatorSuits = {
     hearts: howMany(heartCount),
     diamonds: howMany(diamondsCount),
@@ -76,8 +73,55 @@ let agregatorElem = {
     q: howMany(qCount),
     k: howMany(kCount)
 };
-console.log(Object.values(agregatorSuits).map((e) => e > 1));
-console.log(Object.values(agregatorElem).map((e) => e > 0));
+//*TESTING GROUND*//
+// let agregatorSuits = {
+//     hearts: 0,
+//     diamonds: 5,
+//     spadesCount: 0,
+//     clubs: 0
+// };
+// let agregatorElem = {
+//     ace: 1,
+//     one: 1,
+//     two: 1,
+//     three: 1,
+//     four: 1
+// };
+let royalFlush = Object.values(agregatorSuits).map((x) => x > 4 ).some((x) => x === true)
+let isRoyalStraight = Boolean(agregatorElem.ace === 1 && agregatorElem.k === 1 && agregatorElem.q === 1, agregatorElem.j === 1, agregatorElem.ten ===1)
+let isStraight = [Boolean(agregatorElem.ace === 1 && agregatorElem.k === 1 && agregatorElem.q === 1, agregatorElem.j === 1, agregatorElem.ten ===1),
+    Boolean(agregatorElem.nine === 1 && agregatorElem.k === 1 && agregatorElem.q === 1, agregatorElem.j === 1, agregatorElem.ten ===1),
+    Boolean(agregatorElem.nine === 1 && agregatorElem.eight === 1 && agregatorElem.q === 1, agregatorElem.j === 1, agregatorElem.ten ===1),
+    Boolean(agregatorElem.nine === 1 && agregatorElem.eight === 1 && agregatorElem.seven === 1, agregatorElem.j === 1, agregatorElem.ten ===1),
+    Boolean(agregatorElem.nine === 1 && agregatorElem.eight === 1 && agregatorElem.seven === 1, agregatorElem.six === 1, agregatorElem.ten ===1),
+    Boolean(agregatorElem.nine === 1 && agregatorElem.eight === 1 && agregatorElem.seven === 1, agregatorElem.six === 1, agregatorElem.five ===1),
+    Boolean(agregatorElem.four === 1 && agregatorElem.eight === 1 && agregatorElem.seven === 1, agregatorElem.six === 1, agregatorElem.five ===1),
+    Boolean(agregatorElem.four === 1 && agregatorElem.three === 1 && agregatorElem.seven === 1, agregatorElem.six === 1, agregatorElem.five ===1),
+    Boolean(agregatorElem.four === 1 && agregatorElem.three === 1 && agregatorElem.two === 1, agregatorElem.six === 1, agregatorElem.five ===1),
+    Boolean(agregatorElem.four === 1 && agregatorElem.three === 1 && agregatorElem.two === 1, agregatorElem.ace === 1, agregatorElem.five ===1),
+        Boolean(agregatorElem.ace === 1 && agregatorElem.k === 1 && agregatorElem.q === 1, agregatorElem.j === 1, agregatorElem.ten ===1)].some(x => x === true)
+
+if(royalFlush && isRoyalStraight) {
+    console.log(`You have a Royal Poker!`)
+} else if (royalFlush && isStraight) {
+    console.log(`You have a Poker!`)
+} else if (Object.values(agregatorElem).map((x) => x === 4 ).some((x) => x === true)) {
+    console.log(`You have a Four of a Kind!`)
+} else if (Object.values(agregatorElem).map((x) => x === 3 ).some((x) => x === true) && Object.values(agregatorElem).map((x) => x === 2 ).some((x) => x === true)) {
+    console.log(`You have a Full House!`)
+} else if (royalFlush){
+    console.log(`You have a Flush!`)
+} else if (isStraight){
+    console.log(`You have a Straight!`)
+} else if (Object.values(agregatorElem).map((x) => x === 3 ).some((x) => x === true)) {
+    console.log(`You have a Three of a Kind!`)
+} else if (Object.values(agregatorElem).map((x) => x === 2 ).filter((x) => x == true).length === 2) {
+    console.log(`You have a Two Pairs!`)
+} else if (Object.values(agregatorElem).map((x) => x === 2 ).some((x) => x === true)) {
+    console.log(`You have a One Pair!`)
+} else {
+    console.log(`You have a High Card!`)
+}
 
 
-//function highestSet ()
+

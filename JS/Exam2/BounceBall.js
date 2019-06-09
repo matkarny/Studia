@@ -1,54 +1,23 @@
 let bounceBoard = require('./Boards/ExamInput2');
+var emoji = require('node-emoji')
+const getVectors = require('./Service/GetVectors');
+const randomNumber = require('./Service/RandomNumber');
+const nextStepPoint = require('./Service/NextStepPoint');
+
 let board = bounceBoard.board;
-
-function getRandomIntInclusive(min, max) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-const getVectors = (board, pointX, pointY) => {
-	if (board[pointY][pointX - 1] === "X") {
-		vectorXAdd = true
-
-
-	} else if (board[pointY][pointX + 1] === "X") {
-		vectorXAdd = false;
-
-	}
-
-
-	if (board[pointY - 1][pointX] === "X") {
-		vectorYAdd = true;
-
-	} else if (board[pointY + 1][pointX] === "X") {
-		vectorYAdd = false;
-	}
-
-}
-
-const endingPoint = (startingPoint, vector) =>{
-	let endingPoint;
-if(vector){
-	endingPoint = startingPoint-1
-	}	else {
-	endingPoint = startingPoint+1
-	}
-
-	return endingPoint
-
-}
-
-
 
 
 const bouncingBall = (board) => {
+	let destinationPoint = true;
+	let move = 1;
+
 	let	startPointX;
 	let	startPointY;
 
 	board[1][1] = "0";
 
-	let theOption = getRandomIntInclusive(1, 10);
-	switch (5) {
+	let randomStart = randomNumber(1, 10);
+	switch (randomStart) {
 		case 1:
 			startPointX = 1;
 			startPointY = 1;
@@ -94,34 +63,28 @@ const bouncingBall = (board) => {
 			console.log('Out of range');
 	}
 
-
-	board[startPointY][startPointX] = "1";
-
-getVectors(board,startPointX,startPointY);
-
-
-	let destinationPoint = true;
-	let move = 1;
-
-	let currentPositionX = startPointX;
-	let currentPositionY = startPointY;
-
+	board[startPointY][startPointX] = emoji.get(':red_circle:');
 
 getVectors(board,startPointX,startPointY);
+let currentPositionX = startPointX;
+let currentPositionY = startPointY;
+const endingPointX = nextStepPoint(startPointX, !vectorXAdd);
+const endingPointY = nextStepPoint(startPointY, !vectorYAdd);
 
-const endingPointX = endingPoint(startPointX, vectorXAdd);
-const endingPointY = endingPoint(startPointY, vectorYAdd);
-while (destinationPoint) {
-	console.log(`############## Move number ${move} ################`)
+while (destinationPoint && move< 101) {
+    console.log( emoji.emojify(`:cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud: Move number ${move} :cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:`));
 	console.log(board);
-	let nextStepX = endingPoint(currentPositionX, !vectorXAdd);
-	let	nextStepY = endingPoint(currentPositionY, !vectorYAdd);
-		if (nextStepX === endingPointX && nextStepY === endingPointY) {
+    console.log( emoji.emojify(` :cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud::cloud:`));
+
+	let nextStepX = nextStepPoint(currentPositionX, vectorXAdd);
+	let	nextStepY = nextStepPoint(currentPositionY, vectorYAdd);
+
+	if (nextStepX === endingPointX && nextStepY === endingPointY) {
 			destinationPoint = false;
 			console.log("Ball comes to their destination")
 		} else if (board[nextStepY][nextStepX] === '0') {
 			board[currentPositionY][currentPositionX] = '0';
-			board[nextStepY][nextStepX] = '1';
+			board[nextStepY][nextStepX] = emoji.get(':red_circle:');
 			currentPositionX = nextStepX;
 			currentPositionY = nextStepY;
 		} else if (board[nextStepY][currentPositionX] === 'X' && board[currentPositionY][nextStepX] === 'X' || board[nextStepY][nextStepX] === 'X' && board[nextStepY][currentPositionX] === '0' && board[currentPositionY][nextStepX] === '0') {
@@ -131,7 +94,7 @@ while (destinationPoint) {
 		} else if (board[nextStepY][nextStepX] === 'Y') {
 			board[currentPositionY][currentPositionX] = '0';
 			board[nextStepY][nextStepX] = '0';
-			let theOption = getRandomIntInclusive(1, 3);
+			let theOption = randomNumber(1, 3);
 			switch (theOption) {
 				case 1:
 					vectorXAdd = (vectorXAdd !== true);
@@ -168,7 +131,7 @@ while (destinationPoint) {
 				default:
 					console.log('Out of range');
 			}
-			board[nextStepY][nextStepX] = '1';
+			board[nextStepY][nextStepX] = emoji.get(':red_circle:');
 			currentPositionX = nextStepX;
 			currentPositionY = nextStepY;
 		} else if (board[nextStepY][currentPositionX] === 'X') {
@@ -180,7 +143,7 @@ while (destinationPoint) {
 			} else {
 				currentPositionY--
 			}
-			board[currentPositionY][nextStepX] = '1';
+			board[currentPositionY][nextStepX] = emoji.get(':red_circle:');
 			currentPositionX = nextStepX;
 			currentPositionY;
 		} else if (board[currentPositionY][nextStepX] === 'X') {
@@ -191,53 +154,17 @@ while (destinationPoint) {
 			} else {
 				currentPositionX--
 			}
-			board[nextStepY][currentPositionX] = '1';
+			board[nextStepY][currentPositionX] = emoji.get(':red_circle:');
 			currentPositionX;
 			currentPositionY = nextStepY;
 		}
 		move++
 }
-}
-//
-// const startingPointY = (board) => {
-// 	let lengthOfY = board[1].length;
-// 	let startingPointY = getRandomIntInclusive(1,lengthOfY-2);
-// 	return startingPointY
-// };
-//
-//
-// const startingPointX = (board) => {
-// 	let lengthOfX = board.length;
-// 	let startingPointX = getRandomIntInclusive(1,lengthOfX-2);
-// 	return startingPointX
-// };
-//
-//
-//
-// const getStartingPoint = (board) => {
-// 	let pointX = startingPointX(board);
-// 	let pointY = startingPointY(board);
-// 	let vectorXAdd;
-// 	let vectorYAdd;
-// 	let keepSearching = true
-//
-// 	let startingPoint = board[pointX][pointY];
-//
-// 	let newRandomStartingPoint = () => {
-// 		let pointX = startingPointX(board);
-// 		let pointY = startingPointY(board);
-//
-// 		while (startingPoint !== "0") {
-// 			let newPointX = startingPointX(board);
-// 			pointX = newPointX;
-// 			let newPointY = startingPointY(board);
-// 			pointY = newPointY;
-// 			startingPoint = board[newPointX][newPointY];
-//
-// 		}
-// 	};
-//
 
+if(move===101 && destinationPoint){
+	console.log('Cannot solve it')
+}
+};
 
 
 bouncingBall(board)
